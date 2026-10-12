@@ -107,6 +107,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/buoi_toi" />
+        <TextView
+            android:id="@+id/tvDemBuoiHoc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Số buổi đã chọn: 0"
+            android:textStyle="italic" />
 
         <!-- ===== Switch (Material) và ToggleButton (widget cũ) ===== -->
         <com.google.android.material.materialswitch.MaterialSwitch

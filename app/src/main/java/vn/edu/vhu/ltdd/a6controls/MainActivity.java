@@ -25,7 +25,8 @@ import com.google.android.material.materialswitch.MaterialSwitch;
 
 import java.util.ArrayList;
 import java.util.List;
-
+import android.widget.CompoundButton;
+import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "A6_231A290127";
@@ -80,10 +81,26 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        // ---- CheckBox: lắng nghe thay đổi ----
-        cbToi.setOnCheckedChangeListener((buttonView, isChecked) ->
-                Log.d(TAG, "Buổi Tối: " + (isChecked ? "chọn" : "bỏ chọn")));
+        // Ánh xạ TextView đếm số buổi học
+        TextView tvDemBuoiHoc = findViewById(R.id.tvDemBuoiHoc);
 
+        // ---- CheckBox: lắng nghe thay đổi (Bài NC2) ----
+        // Tạo một Listener dùng chung cho cả 3 CheckBox theo gợi ý của bài lab
+        CompoundButton.OnCheckedChangeListener demBuoiHocListener = (buttonView, isChecked) -> {
+            int dem = 0;
+            // Mỗi lần có thay đổi, kiểm tra lại cả 3 ô xem ô nào đang tick
+            if (cbSang.isChecked()) dem++;
+            if (cbChieu.isChecked()) dem++;
+            if (cbToi.isChecked()) dem++;
+
+            // Cập nhật số lượng lên màn hình
+            tvDemBuoiHoc.setText("Số buổi đã chọn: " + dem);
+        };
+
+        // Gán chung listener vừa tạo cho 3 CheckBox
+        cbSang.setOnCheckedChangeListener(demBuoiHocListener);
+        cbChieu.setOnCheckedChangeListener(demBuoiHocListener);
+        cbToi.setOnCheckedChangeListener(demBuoiHocListener);
         // ---- RadioGroup: chỉ chọn được một ----
         rgHeDaoTao.setOnCheckedChangeListener((group, checkedId) -> {
             String he = (checkedId == R.id.rbChinhQuy) ? getString(R.string.he_chinh_quy)
