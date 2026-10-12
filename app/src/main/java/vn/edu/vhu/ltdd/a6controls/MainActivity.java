@@ -22,7 +22,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.google.android.material.materialswitch.MaterialSwitch;
-
+import androidx.appcompat.app.AppCompatDelegate;
 import java.util.ArrayList;
 import java.util.List;
 import android.widget.CompoundButton;
@@ -59,6 +59,18 @@ public class MainActivity extends AppCompatActivity {
         cbChieu = findViewById(R.id.cbChieu);
         cbToi = findViewById(R.id.cbToi);
         swThongBao = findViewById(R.id.swThongBao);
+        // ---- BÀI NC3: Lắng nghe sự kiện Switch Chế độ tối ----
+        MaterialSwitch swDarkMode = findViewById(R.id.swDarkMode);
+
+        swDarkMode.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if (isChecked) {
+                // Nếu bật công tắc -> Đổi sang nền tối ngay lập tức
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+            } else {
+                // Nếu tắt công tắc -> Trở về nền sáng ban đầu
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+            }
+        });
         tgUuTien = findViewById(R.id.tgUuTien);
         Button btnXacNhan = findViewById(R.id.btnXacNhan);
         Button btnLamLai = findViewById(R.id.btnLamLai);
@@ -83,6 +95,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Ánh xạ TextView đếm số buổi học
         TextView tvDemBuoiHoc = findViewById(R.id.tvDemBuoiHoc);
+
 
         // ---- CheckBox: lắng nghe thay đổi (Bài NC2) ----
         // Tạo một Listener dùng chung cho cả 3 CheckBox theo gợi ý của bài lab

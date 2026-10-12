@@ -107,14 +107,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/buoi_toi" />
+        <!-- BÀI NC2: Text đếm số buổi học -->
         <TextView
             android:id="@+id/tvDemBuoiHoc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:text="Số buổi đã chọn: 0"
+            android:textColor="#D32F2F"
             android:textStyle="italic" />
-
         <!-- ===== Switch (Material) và ToggleButton (widget cũ) ===== -->
         <com.google.android.material.materialswitch.MaterialSwitch
             android:id="@+id/swThongBao"
@@ -124,7 +125,6 @@
             android:checked="true"
             android:minHeight="48dp"
             android:text="@string/label_thong_bao" />
-
         <ToggleButton
             android:id="@+id/tgUuTien"
             android:layout_width="wrap_content"
@@ -132,7 +132,16 @@
             android:layout_marginTop="8dp"
             android:textOff="@string/uu_tien_off"
             android:textOn="@string/uu_tien_on" />
-
+        <!-- ============================================== -->
+        <!-- BÀI NC3: Switch bật/tắt Chế độ tối (Dark Mode) -->
+        <!-- ============================================== -->
+        <com.google.android.material.materialswitch.MaterialSwitch
+            android:id="@+id/swDarkMode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:minHeight="48dp"
+            android:text="Chế độ tối (Dark Mode)" />
         <!-- ===== Nút ===== -->
         <LinearLayout
             android:layout_width="match_parent"
